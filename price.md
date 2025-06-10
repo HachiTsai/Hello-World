@@ -1,1 +1,2 @@
-Price 100USD
+Price 100USD 
+Cost 50USD
