@@ -3,6 +3,9 @@
 		{
 			"name": "Hello-World",
 			"path": "."
+		},
+		{
+			"path": "../TEST"
 		}
 	],
 	"settings": {}
