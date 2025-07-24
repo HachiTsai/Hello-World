@@ -1,7 +1,6 @@
-# start sqlite3
-
 import sqlite3
 
+# 快速測試連接
 try:
     conn = sqlite3.connect(':memory:')  # 記憶體資料庫
     print("SQLite連接成功！")
