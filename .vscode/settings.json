@@ -1,8 +1,6 @@
 {
-    "workbench.colorTheme": "Default High Contrast",
-    "editor.fontSize": 14
-    
-    ,"python.pythonPath": "/Users/hachi/VSCode-Training/Hello-World/myenv/bin/python3"
-    ,"python.defaultInterpreterPath": "/Users/hachi/VSCode-Training/Hello-World/myenv/bin/python3"
+    "python.pythonPath": "/opt/homebrew/bin/python3",
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3"
 
-}
+    }
+
