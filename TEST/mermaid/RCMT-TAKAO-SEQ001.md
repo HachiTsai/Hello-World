@@ -12,5 +12,5 @@ flowchart TD
     J[IN0152] -->|TRUE| C
     K[IN0131] -->|TRUE| C
     C -->|任一為 TRUE| E[觸發 MF01 = TRUE]
-    C -->|皆為 FALSE| F[MF01 維持 FALSE]
+    C -->|任一為 FALSE| F[MF01 維持 FALSE]
 ```
