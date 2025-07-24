@@ -2,21 +2,15 @@
 
 ```mermaid
 flowchart TD
-    subgraph 平行檢查
-    A1[/DB0049]
-    A2[/DI0093]
-    A3[/DI0001]
-    end
-    
-    A1 -->|TRUE| B[MF01 = TRUE]
-    A2 -->|TRUE| B
-    A3 -->|TRUE| B
-    
-    A1 -->|FALSE| C1{檢查完成?}
-    A2 -->|FALSE| C1
-    A3 -->|FALSE| C1
-    
-    C1 -->|是| D{所有訊號都FALSE?}
-    D -->|是| E[MF01 = FALSE]
-    D -->|否| B
+    A[/DB0049/] -->|TRUE| C[判斷條件]
+    B[/DI0093/] -->|TRUE| C
+    D[/DI0001/] -->|TRUE| C
+    G[IN0101] -->|TRUE| C
+    H[IN0102] -->|TRUE| C
+    I[IN0103] -->|TRUE| C
+    H[IN0108] -->|TRUE| C
+    J[IN0152] -->|TRUE| C
+    K[IN0131] -->|TRUE| C
+    C -->|任一為 TRUE| E[觸發 MF01 = TRUE]
+    C -->|皆為 FALSE| F[MF01 維持 FALSE]
 ```
