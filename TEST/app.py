@@ -25,6 +25,6 @@ entry_payment.pack()
 
 tk.Button(window, text="執行交易", command=check_payment).pack()
 result = tk.StringVar()
-tk.Label(window, textvariable=result, fg="blue").pack()
+tk.Label(window, textvariable=result, fg="red").pack()
 
 window.mainloop()
