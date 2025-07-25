@@ -1,4 +1,6 @@
-# RCMT-TAKAO-SEQ001-流程圖
+# 語法筆記
+
+## Mermaid流程圖語法
 
 ```mermaid
 flowchart LR
@@ -19,3 +21,22 @@ flowchart LR
 
 style C3 fill:#fff,stroke:#333,stroke-width:1px,color:#ff0000
 style C4 fill:#fff,stroke:#333,stroke-width:1px,color:#ff0000
+
+## |TRUE|顏色設定
+
+|"<font color='green'>TRUE</font>"|
+
+|"<mark style='background-color:lightgreen'>TRUE</mark>"|
+
+%%斜體+紅字%%
+|"<font color='red' style='font-style:italic'>TRUE</font>"|
+
+%%白底紅字%%
+|<font color='red' style='background-color:white; padding:3px; border:1px solid red'>TRUE</font>|
+
+%%白底紅字斜體粗體%%
+|<font color='red' style='background-color:white; font-style:italic; font-weight:bold'>TRUE</font>|
+
+|"<font color='red' style='background-color:white;font-style:italic; font-weight:bold'>NOT</font>"|
+
+|"<font color='red' style='background-color:white;font-style:italic; font-weight:bold'>NOT</font>"| C1[TD0001 = TRUE<br>Time Count Start]
