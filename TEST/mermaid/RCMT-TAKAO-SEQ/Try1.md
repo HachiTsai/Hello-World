@@ -14,3 +14,8 @@ flowchart LR
     C -->|任一為 TRUE| E[MF01 = TRUE]
     C -->|任一為 FALSE| F[MF01 維持 FALSE]
 ```
+
+## 顏色設定
+
+style C3 fill:#fff,stroke:#333,stroke-width:1px,color:#ff0000
+style C4 fill:#fff,stroke:#333,stroke-width:1px,color:#ff0000
