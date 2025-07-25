@@ -1,5 +1,0 @@
-{
-  "python.defaultInterpreterPath": "/opt/miniconda3/bin/python3",
-  "markdown.preview.mermaid.renderingMode": "browser",
-  "markdown-preview-enhanced.mermaidTheme": "default"
-}
