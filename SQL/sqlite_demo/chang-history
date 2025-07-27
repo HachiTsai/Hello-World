@@ -1,16 +1,49 @@
+-----------------------
+第三次修改，改完後在HELLLO-WORLD的根目錄下建立了“HachiTsai SQLite.session.sql“這個檔案
+ 在SQLtools裡面也新增了這個資料庫資料且可以連線
 
-    "sqltools.connections": [
+// 這段設定是正確的
+{
+    "name": "HachiTsai SQLite",
+    "driver": "SQLite",
+    "database": "${workspaceFolder}/demo.sqlite",
+    "previewLimit": 50
+}
+不過，根據我看到的其他設定檔，問題可能出在您將這個設定放在了哪個 settings.json 檔案中。
+
+潛在問題：設定被覆蓋
+您的專案底下有一個工作區設定檔：/Users/hachi/VSCode-Training/Hello-World/.vscode/settings.json。這個檔案裡面已經有一組 sqltools.connections 設定（用於 Databricks）。
+
+在 VS Code 中，工作區設定 (.vscode/settings.json) 的優先級高於使用者設定。這意味著，如果您將 SQLite 的設定放在全域的「使用者設定」中，它會被工作區的設定整個覆蓋掉，導致您在 SQLTools 擴充套件中只會看到 Databricks 的連線。
+
+解決方案：合併設定
+為了讓兩個連線（Databricks 和 SQLite）同時存在，您需要將它們合併到同一個 sqltools.connections 陣列中，並且這個陣列應該放在優先級最高的工作區設定檔裡。
+
+請修改您的工作區設定檔 /Users/hachi/VSCode-Training/Hello-World/.vscode/settings.json，將 SQLite 的連線設定加進去。
+
+            "previewLimit": 50,
+            "driver": "Databricks",
+            "name": "HachiTsai",
+            "path": "HTTP path e.g. /sql/1.0/endpoints/1234abcd"
+        },
         {
-            // 連線到 SQLite 資料庫的正確設定
-            "name": "HachiTsai SQLite", // 您可以自訂顯示名稱
-            "driver": "SQLite",         // 驅動程式必須是 "SQLite"
-            "database": "${workspaceFolder}/demo.sqlite", // SQLite 資料庫檔案的路徑
+            "name": "HachiTsai SQLite",
+            "driver": "SQLite",
+            "database": "${workspaceFolder}/SQL/sqlite_demo/demo.sqlite",
             "previewLimit": 50
         }
     ]
+}
 
-    
-------下面是Gemini的回答
+修改後說明
+我將您的 SQLite 連線設定物件，加入了現有的 sqltools.connections 陣列中。
+我修正了原檔案中一個多餘的右大括號 }，以避免語法錯誤。
+請注意路徑：我假設您的 demo.sqlite 檔案是放在 /Users/hachi/VSCode-Training/Hello-World/SQL/sqlite_demo/ 這個路徑下。如果不是，請務必將 "database" 的值修改為 demo.sqlite 檔案的正確相對路徑。
+修改完成後，存檔並重新載入 VS Code，您應該就能在 SQLTools 的側邊欄中同時看到 "HachiTsai" (Databricks) 和 "HachiTsai SQLite" (SQLite) 這兩個連線選項了。
+
+
+-------------------------------------------
+第二次修改
 
     // ... 您的其他 VS Code 設定 ...
 
@@ -72,3 +105,21 @@ SQLTools SQLite
 
 希望這能解決您的問題！
 
+
+
+
+
+------------------
+第一次
+
+    "sqltools.connections": [
+        {
+            // 連線到 SQLite 資料庫的正確設定
+            "name": "HachiTsai SQLite", // 您可以自訂顯示名稱
+            "driver": "SQLite",         // 驅動程式必須是 "SQLite"
+            "database": "${workspaceFolder}/demo.sqlite", // SQLite 資料庫檔案的路徑
+            "previewLimit": 50
+        }
+    ]
+
+    
