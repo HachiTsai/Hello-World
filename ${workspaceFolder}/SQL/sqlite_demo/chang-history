@@ -1,3 +1,33 @@
+---------------------
+為何連線無法建立的原因
+您好！這是一個很好的問題，很高興為您解釋。
+
+您會發現 "HachiTsai SQLite" 這個連線不需要登入，而 "HachiTsai" (Databricks) 需要，根本原因在於它們是兩種完全不同類型的資料庫。
+
+1. HachiTsai (Databricks): 伺服器型資料庫 (Server-based)
+連線目標：這是一個遠端的 Databricks 服務。Databricks 是一個雲端平台，您的資料庫和計算資源都存放在遠端的伺服器上。
+運作方式：就像您要登入 Gmail 或網路銀行一樣，您必須提供帳號密碼（或權杖 Token）來向遠端伺服器證明您的身分。伺服器驗證通過後，才會授權您存取資料。
+設定需求：這就是為什麼它需要 Host (主機位址) 和 HTTP Path (資源路徑) 這些資訊，SQLTools 才知道要去哪裡找這個伺服器，並透過 Databricks 擴充套件進行登入驗證。
+簡單比喻： 連線到 Databricks 就像是打電話給銀行客服，您需要提供身分證號和密碼，對方確認是您本人後，才會幫您處理帳戶問題。
+
+2. HachiTsai SQLite: 檔案型資料庫 (File-based)
+連線目標：這是一個 SQLite 資料庫。SQLite 的特別之處在於，它不是一個需要獨立運作的伺服器，而是將整個資料庫儲存在您電腦上的一個單一檔案中。
+運作方式：從您的設定檔可以看到，它的連線目標是：
+json
+"database": "${workspaceFolder}/SQL/sqlite_demo/demo.sqlite"
+這代表 SQLTools 只需要在本機的專案資料夾中找到並讀取 demo.sqlite 這個檔案即可，完全不需要透過網路連線到任何遠端主機。
+設定需求：因為它只是一個本機檔案，所以完全不需要主機位址、連接埠、使用者名稱或密碼。只要檔案路徑正確，就能直接讀寫。
+簡單比喻： 連線到 SQLite 就像是用 Word 打開一個 .docx 文件。您只需要告訴 Word 檔案在哪裡，它就能直接開啟，不需要任何網路登入。
+
+總結
+特性	HachiTsai (Databricks)	HachiTsai SQLite
+類型	伺服器型 (Client-Server)	檔案型 (File-based)
+位置	遠端雲端伺服器	本機電腦上的一個檔案
+連線方式	透過網路	直接讀取檔案
+是否需登入	是，需要驗證身分	否，只需要檔案路徑
+希望這個解釋能幫助您理解它們之間的差異！
+
+
 -----------------------
 第三次修改，改完後在HELLLO-WORLD的根目錄下建立了“HachiTsai SQLite.session.sql“這個檔案
  在SQLtools裡面也新增了這個資料庫資料且可以連線
