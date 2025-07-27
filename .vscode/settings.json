@@ -14,7 +14,7 @@
         {
             "name": "HachiTsai SQLite",
             "driver": "SQLite",
-            "database": "SQL/demo.sqlite",
+            "database": "${workspaceFolder}/SQL/sqlite_demo/demo.sqlite",
             "previewLimit": 50
         }
     ],
