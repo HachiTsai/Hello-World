@@ -25,5 +25,6 @@
             "database": "${workspaceFolder}/SQL/sqlite_demo/demo.sqlite",
             "previewLimit": 50
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
 }
