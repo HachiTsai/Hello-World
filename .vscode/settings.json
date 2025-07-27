@@ -18,9 +18,12 @@
             "driver": "Databricks",
             "name": "HachiTsai",
             "path": "HTTP path e.g. /sql/1.0/endpoints/1234abcd"
+        },
+        {
+            "name": "HachiTsai SQLite",
+            "driver": "SQLite",
+            "database": "${workspaceFolder}/SQL/sqlite_demo/demo.sqlite",
+            "previewLimit": 50
         }
     ]
-  
-
-    }
-
+}
