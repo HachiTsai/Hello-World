@@ -1,0 +1,16 @@
+// VS Code 的 settings.json 檔案
+{
+    // ... 您的其他 VS Code 設定 ...
+
+    "sqltools.connections": [
+        {
+            // 連線到 SQLite 資料庫的正確設定
+            "name": "HachiTsai SQLite", // 您可以自訂顯示名稱
+            "driver": "SQLite",         // 驅動程式必須是 "SQLite"
+            "database": "${workspaceFolder}/demo.sqlite", // SQLite 資料庫檔案的路徑
+            "previewLimit": 50
+        }
+    ]
+
+    // ... 您的其他 VS Code 設定 ...
+}

@@ -1,0 +1,74 @@
+
+    "sqltools.connections": [
+        {
+            // 連線到 SQLite 資料庫的正確設定
+            "name": "HachiTsai SQLite", // 您可以自訂顯示名稱
+            "driver": "SQLite",         // 驅動程式必須是 "SQLite"
+            "database": "${workspaceFolder}/demo.sqlite", // SQLite 資料庫檔案的路徑
+            "previewLimit": 50
+        }
+    ]
+
+    
+------下面是Gemini的回答
+
+    // ... 您的其他 VS Code 設定 ...
+
+您好！很高興能為您檢視 SQLTools 的設定。
+
+您提供的設定檔確實有幾個地方設定錯誤，這也是導致無法連線的主要原因。問題出在您混合了不同資料庫（MySQL/PostgreSQL）和 SQLite 的設定方式。
+
+主要問題點分析
+驅動程式 (Driver) 錯誤：您的資料庫檔案是 demo.sqlite，這是一個 SQLite 資料庫。但是您的驅動程式設定為 "driver": "MySQL"。您需要使用 SQLite 的專用驅動程式。
+連線參數錯誤：您設定了 server, port, user 等參數。這些是連線到像 MySQL 或 PostgreSQL 這類「伺服器型」資料庫才需要的。SQLite 是一個「檔案型」資料庫，連線時只需要指定資料庫檔案的路徑即可，不需要這些參數。
+設定不一致：您設定的 port 是 5432，這是 PostgreSQL 的預設埠號，但您的 driver 卻是 MySQL，這本身也是矛盾的。
+修正建議
+要連線到 demo.sqlite 檔案，您應該使用以下設定。我將 database 的路徑改為使用 ${workspaceFolder} 變數，這樣即使專案移動位置，路徑依然會是正確的。
+
+這是我為您修改後的 settings.json 檔案：
+
+settings.json
+-20
++5
+ Show full code block 
+
+    "sqltools.connections": [
+        {
+            // 連線設定的範例 (以 PostgreSQL 為例)
+            "name": "HachiTsa", // 在 SQLTools 側邊欄中顯示的名稱，可自訂
+            "driver": "MySQL",     // 資料庫類型，需要安裝對應的驅動程式擴充套件
+            "previewLimit": 50,         // 查詢結果預覽的行數限制
+            "server": "localhost",      // 資料庫主機位址 (或 IP)
+            "port": 5432,               // 資料庫監聽的連接埠
+            "user": "HachiTsai",
+            "database": "demo.sqlite"
+            // "password": "您的密碼" // 為了安全，建議不要直接儲存密碼。
+                                    // 您可以將此行刪除或註解掉，
+                                    // SQLTools 會在每次連線時提示您輸入密碼。
+            // 連線到 SQLite 資料庫的正確設定
+            "name": "HachiTsai SQLite", // 您可以自訂顯示名稱
+            "driver": "SQLite",         // 驅動程式必須是 "SQLite"
+            "database": "${workspaceFolder}/demo.sqlite", // SQLite 資料庫檔案的路徑
+            "previewLimit": 50
+        }
+        // 如果有多個連線，可以在這裡繼續新增
+        // {
+        //     "name": "另一個資料庫連線",
+        //     "driver": "MySQL",
+        //     "server": "192.168.1.100",
+        //     "port": 3306,
+        -     "user": "root",
+        //     "database": "my_app"
+        // }
+    ]
+
+    // ... 您的其他 VS Code 設定 ...
+
+重要提醒
+在套用以上設定後，請務必確認您已經在 VS Code 的擴充套件市集中安裝了對應的驅動程式：
+
+SQLTools SQLite
+如果沒有安裝，SQLTools 將找不到名為 "SQLite" 的驅動而無法連線。
+
+希望這能解決您的問題！
+
