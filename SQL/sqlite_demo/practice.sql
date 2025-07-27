@@ -1,3 +1,23 @@
+--開啟資料庫
+sqlite3 <資料庫名稱>
+
+--確認表格是否存在
+.TABLE
+
+--查看欄位
+PRAGMA table_info(products);
+
+
+--建立資料表
+CREATE TABLE products (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  category TEXT,
+  price REAL
+);
+
+
+
 -- 💾 新增商品資料
 INSERT INTO products (name, category, price)
 VALUES ('Mouse', 'Accessories', 350);
