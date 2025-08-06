@@ -19,6 +19,11 @@
             "name": "HachiTsai",
             "path": "HTTP path e.g. /sql/1.0/endpoints/1234abcd"
         }
-    ]
+    ],
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+     "terminal.integrated.profiles.windows": {
+         "Git Bash": {
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+        }
+    }
 }
-
