@@ -1,4 +1,7 @@
-{
+{   
+    
+        "python.defaultInterpreterPath": "/opt/miniconda3/envs/myenv/bin/python"
+    ,
     "cSpell.words": [
         "oneshot"
     ],
