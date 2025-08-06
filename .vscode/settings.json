@@ -1,6 +1,6 @@
 {   
     
-        "python.defaultInterpreterPath": "/opt/miniconda3/envs/myenv/bin/python"
+        "python.envFile": "${workspaceFolder}/.env"
     ,
     "cSpell.words": [
         "oneshot"
