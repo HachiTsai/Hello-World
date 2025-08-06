@@ -1,5 +1,0 @@
-# Custom Dictionary Words
-nbformat
-QMAX
-WWNVEQ
-WWPMEQ
