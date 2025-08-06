@@ -17,7 +17,6 @@ dependencies:
       - mkdocs-material==9.6.16
       - mkdocs-mermaid2-plugin
       - mkdocs-jupyter
-      - mermaid
       - requests
       - httpx
       - markdown-it-py
