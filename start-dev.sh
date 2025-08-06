@@ -1,3 +1,3 @@
 #!/bin/bash
-conda activate hello-world-env
+conda activate myenv
 exec bash
