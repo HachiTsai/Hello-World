@@ -1,4 +1,4 @@
-name: myenv
+name: learning-env
 channels:
   - defaults
   - conda-forge
