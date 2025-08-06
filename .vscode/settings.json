@@ -21,11 +21,11 @@
         }
     ],
     "terminal.integrated.profiles.windows": {
-  "GitBashConda": {
-    "path": "C:\\Program Files\\Git\\bin\\bash.exe",
-    "args": ["--login", "-c", "conda activate myenv && exec bash"]
-  }
-},
-"terminal.integrated.defaultProfile.windows": "Git Bash"
+        "Git Bash": {
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+            "args": ["--login", "-c", "conda activate myenv && exec bash"]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash"
 
 }
