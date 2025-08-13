@@ -29,6 +29,7 @@
         "path": "C:\\Program Files\\Git\\bin\\bash.exe",
     "args": ["--login", "-i"]
      }
-}
+    },
+    "python.analysis.typeCheckingMode": "off"
     
 }
