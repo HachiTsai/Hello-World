@@ -1,9 +1,12 @@
 import sqlite3
+import os
 
-# 快速測試連接
+# 確認檔案可存取
+db_path = os.path.abspath("hi.db")
+print(f"Database path: {db_path}")
+
 try:
-    conn = sqlite3.connect(':memory:')  # 記憶體資料庫
-    print("SQLite連接成功！")
-    conn.close()
-except sqlite3.Error as e:
-    print(f"連接失敗: {e}")
+    conn = sqlite3.connect(db_path)
+    print("連接成功！")
+except Exception as e:
+    print(f"錯誤: {e}")
