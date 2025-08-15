@@ -6,5 +6,11 @@
             "name": "mydb",
             "database": "./SQL/mysql/database/hi.db"
         }
+    ],
+     "cSpell.languageSettings": [
+       {
+         "languageId": "python",
+         "enabled": false
+       }
     ]
 }
