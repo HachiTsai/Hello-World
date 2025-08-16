@@ -1,0 +1,10 @@
+{
+  "models": [
+    {
+      "title": "DeepSeek-R1",
+      "provider": "deepseek",
+      "model": "deepseek-coder",
+      "apiKey": ""
+    }
+  ]
+}
