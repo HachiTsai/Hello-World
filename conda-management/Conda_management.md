@@ -43,4 +43,4 @@
 | 確認conda頻道優先順序     | `conda config --show channels`|
 
 ---
-[//]: # (這是一段註解)
+[//]: 確認conda頻道優先順序 (這是一段註解)
