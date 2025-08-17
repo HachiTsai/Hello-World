@@ -43,18 +43,3 @@
 | 確認conda頻道優先順序     | `conda config --show channels`|
 
 ---
-
-## 💼 VSCode 整合技巧
-
-### 選擇 Python 解譯器
-
-- 在 VSCode 中按 `Ctrl + Shift + P`（或 macOS 為 `Cmd + Shift + P`）
-- 選擇 `Python: Select Interpreter`
-- 選擇對應的 Conda 路徑，例如 `/opt/miniconda3/envs/dcs-dev/bin/python`
-
-### 設定 `.vscode/settings.json`
-
- ```json
-{
-  "python.defaultInterpreterPath": "/opt/miniconda3/envs/dcs-dev/bin/python"
-}
