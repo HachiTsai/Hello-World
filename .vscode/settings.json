@@ -12,5 +12,6 @@
             "languageId": "python",
             "enabled": false
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": false
 }

@@ -17,6 +17,11 @@
 | 匯入套件    | `pip install -r requirements.txt`          |
 | 檢查已安裝套件是否有新版    | `pip-review --local or pip-upgrade`   |
 | 更新所有套件    | `conda update -n myenv --all`      |
+| 檢查現有頻道    | `conda config --show channels`     |
+| 設定優先順序    | `conda config --set channel_priority strict`     |
+| 導出跨平台一致性版本yml    | `conda env export --no-builds > environment.yml`     |
+| 調整頻道順序   | `conda config --prepend channels conda-forge`     |
+| 移除頻道   | `conda config --remove channels conda-forge`     |
 
 ---
 
@@ -29,6 +34,7 @@
 | 更新套件     | `conda update numpy`                  |
 | 查詢套件     | `conda list`、`conda search openpyxl` |
 | 更新 Conda 本身 | `conda update -n base conda`            |
+| 使用 conda clean 清理快取 | `conda clean --all`            |
 
 ---
 
