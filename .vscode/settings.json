@@ -13,5 +13,6 @@
             "enabled": false
         }
     ],
-    "sqltools.useNodeRuntime": false
+    "sqltools.useNodeRuntime": false,
+    "docwriter.style": "RustDoc"
 }
