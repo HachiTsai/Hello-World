@@ -25,3 +25,12 @@ note:sqlite3 editor 需要安裝,將多餘的sql預覽器關閉
 在取代欄位輸入: --
 點選「全部取代」
 建議使用第一種方式，因為這是最快速且方便的做法。VS Code 會自動根據檔案類型選擇適當的註解符號。*/
+
+<span style="color:red;">這是紅色文字</span>
+
+`這是紅色文字`{.red}
+
+```mermaid
+graph LR 
+    a1[hi] --> a2[hello]
+```
