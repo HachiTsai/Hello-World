@@ -5,7 +5,6 @@
 		}
 	],
 	"settings": {
-		"docwriter.style": "RustDoc",
 		"terminal.integrated.sendKeybindingsToShell": true
 	}
 }
