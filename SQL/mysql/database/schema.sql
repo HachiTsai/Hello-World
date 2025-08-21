@@ -14,7 +14,7 @@
 --   ('handphone', 30000),
 --   ('notebook', 35000);
 
---select * from product where name = 'car'
+--SELECT * FROM product WHERE name = 'car';
 
 /* --------TABLE seperate-line -------- */
 

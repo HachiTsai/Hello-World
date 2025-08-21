@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
-		"terminal.integrated.sendKeybindingsToShell": true
+		"terminal.integrated.sendKeybindingsToShell": true,
+		"cSpell.ignoreWords": [
+			"pakage"
+		]
 	}
 }

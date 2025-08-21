@@ -35,6 +35,7 @@
 | 查詢套件     | `conda list`、`conda search openpyxl` |
 | 更新 Conda 本身 | `conda update -n base conda`            |
 | 使用 conda clean 清理快取 | `conda clean --all`            |
+| 指定頻道安裝 | `conda install pakage -c conda-forge`  |
 
 ---
 
