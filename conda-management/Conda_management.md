@@ -9,7 +9,7 @@
 | 功能       | 指令範例                                      |
 |------------|-----------------------------------------------|
 | 查看所有環境 | `conda info --envs`                           |
-| 建立新環境   | `conda create -n dcs-dev python=3.10`         |
+| 建立新環境   | `conda create -n myenv-name python=3.13.5`         |
 | 刪除環境     | `conda remove --name 舊環境名稱 --all`        |
 | 啟用環境     | `conda activate 環境名稱`                     |
 | 關閉環境     | `conda deactivate`                            |
@@ -18,6 +18,7 @@
 | 檢查已安裝套件是否有新版    | `pip-review --local or pip-upgrade`   |
 | 更新所有套件    | `conda update -n myenv --all`      |
 | 檢查現有頻道    | `conda config --show channels`     |
+| 檢查現有頻道優先順序    | `conda config --show channel_priority`     |
 | 設定優先順序    | `conda config --set channel_priority strict`     |
 | 導出跨平台一致性版本yml    | `conda env export --no-builds > environment.yml`     |
 | 調整頻道順序   | `conda config --prepend channels conda-forge`     |
