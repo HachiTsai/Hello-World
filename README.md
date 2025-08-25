@@ -13,6 +13,7 @@
 | 確定python 安裝的位置 | `where python` "windows"|
 | 有可能使用到base環境需另新增 | `conda create -n myenv-windows python =3.13.5` |
 | 重新安裝並指定conda頻道 | `conda install python mkdocs jupyter nodejs sqlite numpy pandas matplotlib pytorch opencv postgresql -c conda-forge`|
+| 重新安裝mkdocs tool | `pip install mkdocs-material mkdocs-mermaid2-plugin `|
 
 ---
 
