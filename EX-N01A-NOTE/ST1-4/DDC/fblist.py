@@ -2,11 +2,38 @@ from docling.document_converter import DocumentConverter
 
 converter = DocumentConverter()
 
+# --------------------------------------------------------------
+# Basic PDF extraction
+# --------------------------------------------------------------
 
-result = converter.convert("C:\\Hachi.Tsai\\練習-GIT\\Hello-World\\EX-N01A-NOTE\\ST1-4\\DDC\\FUNCTIONBLOCKLIST.pdf") # document per local path or URL
+result = converter.convert("https://arxiv.org/pdf/2408.09869")
 
 document = result.document
 markdown_output = document.export_to_markdown()
+json_output = document.export_to_dict()
 
+print(markdown_output)
+print(json_output)
 
-print(markdown_output)  # output: "## Docling Technical Report[...]"
+# --------------------------------------------------------------
+# Basic HTML extraction
+# --------------------------------------------------------------
+
+result = converter.convert("https://ds4sd.github.io/docling/")
+
+document = result.document
+markdown_output = document.export_to_markdown()
+print(markdown_output)
+
+# --------------------------------------------------------------
+# Scrape multiple pages using the sitemap
+# --------------------------------------------------------------
+
+sitemap_urls = get_sitemap_urls("https://ds4sd.github.io/docling/")
+conv_results_iter = converter.convert_all(sitemap_urls)
+
+docs = []
+for result in conv_results_iter:
+    if result.document:
+        document = result.document
+        docs.append(document)
