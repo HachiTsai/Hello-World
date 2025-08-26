@@ -14,7 +14,7 @@
 | 有可能使用到base環境需另新增 | `conda create -n myenv-windows python =3.13.5` |
 | 重新安裝並指定conda頻道 | `conda install python mkdocs jupyter nodejs sqlite numpy pandas matplotlib pytorch opencv postgresql flask scikit-learn -c conda-forge`|
 | 重新安裝mkdocs tool | `pip install mkdocs-material mkdocs-mermaid2-plugin`|
-| 重新安裝PIP tool | `pip install tensorflow docling`|
+| 重新安裝PIP tool | `pip install tensorflow`|
 | 重新升級 | `pip install --upgrade ipykernel jupyter ipywidgets`|
 
 ---
