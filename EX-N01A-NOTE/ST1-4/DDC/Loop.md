@@ -27,36 +27,37 @@ flowchart LR
 
 ---
 
+## PIC壓力監測控制
+
 ```mermaid
 stateDiagram-v2 
     %%Input
         AI0010 : AI0010
-    state "輸入-偏差演算-輸出內部演算值" as Input1{
+    state "輸入-偏差演算-輸出內部演算值" as Process{
         direction LR
-        F02B05 : 輸入 
-        F04B20 : 偏差演算
-        F05B25 : PID/BUMPLESS
-        F13B30 : 訊號選擇
-        F07B33 : 輸出
+            A : GMS控制或AI訊號輸入-偏差PID演算-輸出內部演算結果
+            B : SV/DV/斜率設定監測
+            C : 線性定數輸出
+            D : 輸出控制閥
 
-        AI0010 --> F02B05
-        F02B05 --> F04B20
-        F04B20 --> F05B25
-        F05B25 --> F13B30
-        F13B30 --> F07B33
+            AI0010 --> A
+            A --> B
+            B --> C
+            C --> D
     }
 ```
 
 ```mermaid
+%%{init: {'themeVariables': {'fontSize': '36px'}}}%% 
 flowchart LR
         F01B01@{ shape: div-rect, label: "F01B01<br>模式切換" }
 
         F02B05@{ shape: div-rect, label: "F02B05<br>入力處理" }
-        F04B20@{ shape: div-rect, label: "F04B20<br>偏差演算 " }
+        F04B20@{ shape: div-rect, label: "**F04B20**<br><span style="color: yellow; font-weight: bold;">偏差演算</span>" }
         F05B25@{ shape: div-rect, label: "F05B25<br>PID演算器/BUMPLESS" }
         F13B30@{ shape: div-rect, label: "F13B30<br>訊號選擇<br>X1->IN0016<br>X2->LA(PIC101)"}
         F07B33@{ shape: div-rect, label: "F07B33<br>輸出 " }
-        F08B07@{ shape: div-rect, label: "F08b07<br>警報 " }
+        F08B07@{ shape: div-rect, label: "F08B07<br>警報 " }
 
         F13B15@{ shape: div-rect, label: "F13B15<br>訊號選擇 " }
         F13B16@{ shape: div-rect, label: "F13B16<br>訊號選擇 " }
@@ -82,33 +83,44 @@ flowchart LR
         PIC101DV([PIC101DV])
         IN0001([IN0001])
 
+        IN0751([IN0751])
+        PIC101MV([PIC101MV])
+
 
 
         AI0010([AI0010]) --> F02B05
-        F02B05 --> F04B20 & F08B07
+        F02B05 --> F04B20
         F04B20 --> F05B25
+        IN0751 -->|BUMP| F05B25
+        PIC101MV -->|BPDA| F05B25
         F05B25 --> F13B30
         F13B30 --> F07B33
-        IN0090([IN0090]) -->|Z-定數開關| F07B33
-        F07B33 -->|X2<-Y1| F02B05
+        IN0090([IN0090]) -->|Z-強制定數輸出開關| F07B33
+        
+        %% AI訊號迴路自檢
+        F07B33 -->|X2<-Y1自檢迴路| F02B05
+        F02B05 -->|自檢警報|F08B07
+        
         F07B33 -->|Y1|F18B35
         F18B35 --> F07B40 & F08B34
         F07B40 -->|Y1| F08B41
         F07B40 -->|Y2| AO0000([AO0000])
 
+        %%GMS資料-CASCADE控制
         PIC101DATA1HH -->|X1| F13B15
         PIC101DATA1LL -->|X2| F13B15
         PIC101DATA2HH -->|X3| F13B15
-        F13B15 -->|X2| F13B16
-        IN0747 -->|Z1| F14B17
+        F13B15 -->|X1| F13B16
+        F13B15 -->|X2-斜率目標值| F14B17
+        IN0747 -->|Z1-斜率定數輸出設定開關| F14B17
         F14B17 -->|X2| F13B16
-        F13B16 -->|X2|F04B20
-        F13B16 -->|X2| F04B20
-        
-        %% mode change
+        F13B16 -->|X2-CASCADE|F04B20
+        %%MODE-chage
         IN0013 -->|Z1=切換CASCADE|F01B01
-
+        %%設定值監控警報
         PIC101SV -->|X1|F08B50
-        PIC101DV -->|X1|F08B23 & F26B21
+
+        %%DV最大值與最小值
+        PIC101DV -->|X1=DV最大值與最小值監控|F08B23 & F26B21
         IN0001 -->|Z1|F26B21    
 ```

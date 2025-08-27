@@ -1,18 +1,10 @@
-# 前言
-
-在日常程式開發與文件整理中，**Markdown、Mermaid、CSS（以及 HTML 的 <span> 標籤）** 都是常用且實務性很高的技能。本文已將你提供的內容整理、分類並產生為可直接存成 `.md` 的 Markdown 檔案內容，方便放入筆記或 README 中快速查閱與複製使用。
-
-以下內容包含：前言、Markdown 文字顏色與進階控制、Mermaid 與 CSS 的應用、常見疑問、實作範例與速查表。你可直接將整段複製並儲存為檔名（建議）：`markdown-mermaid-css-guide.md`。
-
----
-
-## Markdown / Mermaid / CSS — 色彩與樣式速查筆記
+# Markdown / Mermaid / CSS — 色彩與樣式速查筆記
 
 ## 目錄
 
-- [前言](#前言)
-  - [Markdown / Mermaid / CSS — 色彩與樣式速查筆記](#markdown--mermaid--css--色彩與樣式速查筆記)
+- [Markdown / Mermaid / CSS — 色彩與樣式速查筆記](#markdown--mermaid--css--色彩與樣式速查筆記)
   - [目錄](#目錄)
+  - [前言](#前言)
   - [一、Markdown 進階色彩與文字樣式](#一markdown-進階色彩與文字樣式)
     - [1. Markdown 變色語法及限制](#1-markdown-變色語法及限制)
     - [2. 與字體加粗、斜體的混用](#2-與字體加粗斜體的混用)
@@ -20,6 +12,9 @@
     - [1. 連結顯示文字與動畫範例](#1-連結顯示文字與動畫範例)
     - [2. 節點形狀類型一覽](#2-節點形狀類型一覽)
     - [3. Mermaid 支援色彩類型總結](#3-mermaid-支援色彩類型總結)
+    - [4. 針對 Mermaid 圖表的解決方案](#4-針對-mermaid-圖表的解決方案)
+      - [1. 使用 `classDef` 統一風格](#1-使用-classdef-統一風格)
+      - [2. 透過 `%%{init}%%` 全局設定](#2-透過-init-全局設定)
   - [三、CSS 顏色語法速查與應用](#三css-顏色語法速查與應用)
     - [1. 顏色名稱（Color Names）](#1-顏色名稱color-names)
     - [2. 十六進位（Hex）](#2-十六進位hex)
@@ -41,6 +36,12 @@
   - [六、進階整理 \& 常見疑問集（Q\&A）](#六進階整理--常見疑問集qa)
   - [附錄：完整 Mermaid / HTML 範例程式碼區塊](#附錄完整-mermaid--html-範例程式碼區塊)
   - [結語](#結語)
+
+---
+
+## 前言
+
+在日常程式開發與文件整理中，**Markdown、Mermaid、CSS（以及 HTML 的 <span> 標籤）** 都是常用且實務性很高的技能。本文整理成可直接存成 `.md` 的 Markdown 檔內容，方便放入筆記或 README 中快速查閱與複製使用。請將檔名建議設定為：`markdown-mermaid-css-guide.md`。
 
 ---
 
@@ -98,9 +99,9 @@ flowchart TD
 | `{}` | 菱形（決策） | `C{菱形節點}` |
 | `()` | 圓角矩形 | `B(圓角矩形)` |
 | `(( ))` | 圓形 / 橢圓 | `D((圓形))` |
-| `[()]` | 圓角 + 內凹 | `E[()內凹圓角]` |
+| `[()]` | 圓角 + 內凹 | `E[(內凹圓角)]` |
 | `[[]]` | 雙層方框 | `F[[雙層框]]` |
-| `> ... <` | 新月形 | `G>新月形<` |
+| `[\\]` | 新月形 | `G[\左斜標籤\]` |
 
 - 範例（多形狀）：
 
@@ -110,9 +111,9 @@ flowchart LR
     B(圓角矩形)
     C{菱形}
     D((圓形))
-    E[() 圓角內凹]
+    E[( 圓角內凹)]
     F[[雙層框]]
-    G>新月形<
+    G[\左斜標籤\]
     A --> B --> C --> D --> E --> F --> G
 ```
 
@@ -126,6 +127,37 @@ Mermaid 的 `style` 屬性通常接受以下 CSS 色彩格式：
 - `hsl()` / `hsla()`
 
 > 多數情況下可以直接使用 CSS 支援的顏色格式，但渲染結果仍依平台與 Mermaid 版本而異，建議逐一驗證。
+
+### 4. 針對 Mermaid 圖表的解決方案
+
+若目標是 **Mermaid 圖表中的節點文字**，可透過以下方式批量設定：
+
+#### 1. 使用 `classDef` 統一風格
+
+```mermaid
+graph TD
+    %% 定義一個全局樣式
+    classDef largeText fill:#fff,stroke:#333,font-size:20px
+
+    A[節點A]:::largeText
+    B[節點B]:::largeText
+    C[節點C]:::largeText
+```
+
+- **優點**：只需定義一次，所有套用 `:::largeText` 的節點都會繼承樣式。  
+- **缺點**：需手動為每個節點添加類別。
+
+#### 2. 透過 `%%{init}%%` 全局設定
+
+```mermaid
+%%{init: {'themeVariables': {'fontSize': '20px'}}}%%
+graph TD
+    A[所有節點文字變大]
+    B[無需手動設定]
+```
+
+- **優點**：一次性修改所有文字大小。  
+- **缺點**：會影響整個圖表（包括邊緣標籤等）。
 
 ---
 
@@ -201,7 +233,7 @@ color: hsla(120, 80%, 40%, 0.8);/* HSLA 帶透明度 */
 
 ### 3. 使用場景建議
 
-- ✅ 使用 `<span>`：現代網站、Mermaid（若支援 HTML）、可維護與可重複使用的樣式（搭配 class/classDef）。
+- ✅ 使用 `<span>`：現代網站、Mermaid（若支援 HTML）、可維護與可重複使用的樣式（搭配 class/classDef）。  
 - ❌ 避免 `<font>`：新專案、框架（React/Vue）、需跨平台相容性時。
 
 ### 4. 替代方案（Mermaid classDef / CSS）
@@ -322,6 +354,23 @@ graph TD
   A --> B
 ```
 
+- Mermaid 範例（節點文字批量設定：classDef 與 init）：
+
+```mermaid
+%% 使用 classDef
+graph TD
+    classDef largeText fill:#fff,stroke:#333,font-size:20px
+    A[節點A]:::largeText
+    B[節點B]:::largeText
+    C[節點C]:::largeText
+
+%% 使用 init 全局設定
+%%{init: {'themeVariables': {'fontSize': '20px'}}}%%
+graph TD
+    A[所有節點文字變大]
+    B[無需手動設定]
+```
+
 - HTML 範例（混合 Markdown）：
 
 ```html
@@ -335,11 +384,12 @@ graph TD
 
 - **重點整理**：若需要文字變色或進階樣式，首選 `<span>` + CSS（或 Mermaid 的 `classDef`），避免使用已廢棄的 `<font>`。  
 - **相容性檢核**：實作前請在目標平台（MkDocs、GitHub、Notion、Obsidian、Mermaid 版本）做相容測試。  
-- **延伸**：若你需要，我可以：
-  - 直接把上述內容產生為 `.md` 檔並提供下載；  
-  - 或把檔案轉為 Obsidian 加上 YAML front matter；  
-  - 或產生精簡版 README（單頁摘要）。  
 
-如果要我「直接產生 .md 檔並提供下載」，請回覆：  
+---
 
-- 提供檔案下載。
+我已將你提供的 Mermaid 圖表節點文字「批量設定」解法（`classDef` 與 `%%{init}%%`）整合進上文。若你要，我可以：
+
+- 幫你產生可直接下載的 `markdown-mermaid-css-guide.md` 檔案（ZIP 或純 .md），或
+- 將其中的 Mermaid 範例轉成更完整的 demo（含 HTML 包裝、Mermaid CDN）供你在本地測試。
+
+你要哪一種？
