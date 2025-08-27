@@ -11,6 +11,7 @@
 		"terminal.integrated.sendKeybindingsToShell": true,
 		"cSpell.ignoreWords": [
 			"pakage"
-		]
+		],
+		"liveServer.settings.multiRootWorkspaceName": "Hachi-Roadmap"
 	}
 }

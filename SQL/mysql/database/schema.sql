@@ -1,3 +1,21 @@
+-- 建立資料表Daily_report
+
+-- CREATE TABLE IF NOT EXISTS Daily_report (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   content TEXT NOT NULL,
+--   reference TEXT NOT NULL,
+--   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
+
+
+-- 插入測試資料
+-- INSERT INTO Daily_report (content, reference) VALUES 
+--   ('查詢pip中需要更新版本的套件', 'z-others/pip-upgrade-step.ipynb');
+
+-- SELECT * FROM Daily_report WHERE content = '查詢pip中需要更新版本的套件';
+
+/* --------TABLE seperate-line -------- */
+
 -- 建立資料表product
 
 -- CREATE TABLE IF NOT EXISTS product (
