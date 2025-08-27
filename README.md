@@ -12,9 +12,9 @@
 | conda 的python版本與ipykernel核心版本不一致  | `conda list python` 和查看ipykernel python版本    |
 | 確定python 安裝的位置 | `where python` "windows"|
 | 有可能使用到base環境需另新增 | `conda create -n myenv-windows python =3.13.5 -y` |
-| 重新安裝並指定conda頻道 | `conda install python mkdocs jupyter nodejs sqlite numpy pandas matplotlib pytorch opencv postgresql flask scikit-learn -c conda-forge`|
+| 重新安裝並指定conda頻道 | `conda install python mkdocs jupyter nodejs sqlite numpy pandas matplotlib opencv postgresql flask scikit-learn -c conda-forge`|
 | 重新安裝mkdocs tool | `pip install mkdocs-material mkdocs-mermaid2-plugin`|
-| 重新安裝PIP tool | `pip install tensorflow`|
+| 重新安裝PIP tool | `pip install tensorflow torch`|
 | 重新升級 | `pip install --upgrade ipykernel jupyter ipywidgets`|
 
 ---
