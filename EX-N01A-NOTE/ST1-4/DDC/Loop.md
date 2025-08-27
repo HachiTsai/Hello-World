@@ -105,7 +105,9 @@ flowchart LR
         F13B16 -->|X2|F04B20
         F13B16 -->|X2| F04B20
         
-        IN0013 -->|Z1|F01B01
+        %% mode change
+        IN0013 -->|Z1=切換CASCADE|F01B01
+
         PIC101SV -->|X1|F08B50
         PIC101DV -->|X1|F08B23 & F26B21
         IN0001 -->|Z1|F26B21    

@@ -3,6 +3,13 @@
         "AUTOINCREMENT",
         "BUMPLESS",
         "handphone",
-        "seperate"
-    ]
+"seperate"
+],
+"markdownlint.config": {
+  "MD033": {
+    "allowed_elements": ["span"]
+  },
+  "MD051": false
+}
+
 }
