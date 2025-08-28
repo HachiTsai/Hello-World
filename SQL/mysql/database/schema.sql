@@ -12,6 +12,10 @@
 
 -- INSERT INTO Daily_report (content, reference, tag) VALUES 
 --   ('新增db的tag欄位，並更新欄位資訊', 'SQL/mysql/database/hi.db', 'sql/db/schema');
+
+-- INSERT INTO Daily_report (content, reference, tag) VALUES 
+-- ('使用jupyter寫sqlite語法', 'SQL/sqlite-python.ipynb', 'ipython-sql/sql/');
+
 -- SELECT * FROM Daily_report;
 
 -- SELECT * FROM Daily_report WHERE content = 'pip';

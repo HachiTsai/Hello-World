@@ -3,7 +3,13 @@
         "AUTOINCREMENT",
         "BUMPLESS",
         "handphone",
-"seperate"
+        "ipynb",
+        "seperate",
+        "ipython",
+        "RCMT",
+        "localtime",
+        "colwidth",
+        "colheader"
 ],
 "markdownlint.config": {
   "MD033": false,
