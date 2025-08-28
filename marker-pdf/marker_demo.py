@@ -13,8 +13,8 @@ def save_markdown(content, output_path):
         f.write(content)
 
 # 使用範例
-pdf_path = "FUNCTIONBLOCKLIST.pdf"
-output_path = "FUNCTIONBLOCKLIST.md"
+pdf_path = "analog.pdf"
+output_path = "analog.md"
 md_text = extract_with_marker(pdf_path)
 save_markdown(md_text, output_path)
 print(f"✅ Markdown saved to {output_path}")
