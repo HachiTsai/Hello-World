@@ -94,5 +94,3 @@ python -c "import sys; sys.path.insert(0, './libs'); import pandas; print('Succe
    import sys
    sys.path.insert(0, '/path/to/your/directory')
    ```
-
-哪種方法最符合你的使用情境呢？需要我針對特定情境提供更詳細的說明嗎？

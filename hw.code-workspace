@@ -8,7 +8,7 @@
 		}
 	],
 	"settings": {
-		"terminal.integrated.sendKeybindingsToShell": true,
+		"terminal.integrated.sendKeybindingsToShell": false,
 		"cSpell.ignoreWords": [
 			"pakage"
 		],

@@ -87,40 +87,124 @@ flowchart LR
         PIC101MV([PIC101MV])
 
 
+    %%link1-8
+    AI0010([AI0010]) --> F02B05 
+    F02B05 --> F04B20   
+    F04B20 --> F05B25   
+    IN0751 -->|BUMP| F05B25  
+    PIC101MV -->|BPDA| F05B25 
+    F05B25 --> F13B30  
+    F13B30 --> F07B33   
+    IN0090([IN0090]) -->|Z-強制定數輸出開關| F07B33  
+    
+    %% AI訊號迴路自檢 
+    %%link9-14
+    F07B33 -->|X2<-Y1自檢迴路| F02B05 
+    F02B05 -->|自檢警報|F08B07 
+    
+    F07B33 -->|Y1|F18B35 
+    F18B35 --> F07B40 & F08B34  
+    F07B40 -->|Y1| F08B41  
+    F07B40 -->|Y2| AO0000([AO0000]) 
 
-        AI0010([AI0010]) --> F02B05
-        F02B05 --> F04B20
-        F04B20 --> F05B25
-        IN0751 -->|BUMP| F05B25
-        PIC101MV -->|BPDA| F05B25
-        F05B25 --> F13B30
-        F13B30 --> F07B33
-        IN0090([IN0090]) -->|Z-強制定數輸出開關| F07B33
-        
-        %% AI訊號迴路自檢
-        F07B33 -->|X2<-Y1自檢迴路| F02B05
-        F02B05 -->|自檢警報|F08B07
-        
-        F07B33 -->|Y1|F18B35
-        F18B35 --> F07B40 & F08B34
-        F07B40 -->|Y1| F08B41
-        F07B40 -->|Y2| AO0000([AO0000])
+    %%GMS資料-CASCADE控制 
+    %%link15-22
+    PIC101DATA1HH -->|X1| F13B15 
+    PIC101DATA1LL -->|X2| F13B15 
+    PIC101DATA2HH -->|X3| F13B15  
+    F13B15 -->|X1| F13B16  
+    F13B15 -->|X2-斜率目標值| F14B17  
+    IN0747 -->|Z1-斜率定數輸出設定開關| F14B17  
+    F14B17 -->|X2| F13B16  
+    F13B16 L21@==>|X2-CASCADE|F04B20  
+           L21@{ animate: true}
+    
+    %%MODE-chage 
+    %%link23
+    IN0013 -->|Z1=切換CASCADE|F01B01  
+    
+    %%設定值監控警報 
+    %%link24
+    PIC101SV -->|X1|F08B50  
 
-        %%GMS資料-CASCADE控制
-        PIC101DATA1HH -->|X1| F13B15
-        PIC101DATA1LL -->|X2| F13B15
-        PIC101DATA2HH -->|X3| F13B15
-        F13B15 -->|X1| F13B16
-        F13B15 -->|X2-斜率目標值| F14B17
-        IN0747 -->|Z1-斜率定數輸出設定開關| F14B17
-        F14B17 -->|X2| F13B16
-        F13B16 -->|X2-CASCADE|F04B20
-        %%MODE-chage
-        IN0013 -->|Z1=切換CASCADE|F01B01
-        %%設定值監控警報
-        PIC101SV -->|X1|F08B50
+    %%DV最大值與最小值
+    %%link25-26
+    PIC101DV -->|X1=DV最大值與最小值監控|F08B23 & F26B21  
+    IN0001 -->|Z1|F26B21  
 
-        %%DV最大值與最小值
-        PIC101DV -->|X1=DV最大值與最小值監控|F08B23 & F26B21
-        IN0001 -->|Z1|F26B21    
+    linkStyle 22 color:red,stroke:red;
+
+```
+
+---
+
+## SIC(SPEED-MONITOR-CONTROL)
+
+```mermaid
+%%{init: {'themeVariables': {'fontSize': '36px'}}}%% 
+flowchart LR
+     %%FunctionBlock definition 1 row
+        F02B05@{ shape: div-rect, label: "F02B05<br>入力處理" }
+        F04B10@{ shape: div-rect, label: "F04B10<br>CASCADE/偏差演算" }
+        F08B13@{ shape: div-rect, label: "F08B13<br>警報" }
+        F13B49@{ shape: div-rect, label: "F13B49<br>訊號選擇" }
+        F13B15@{ shape: div-rect, label: "F13B15<br>訊號選擇" }
+    %%FunctionBlock definition 2 row
+        F13B35@{ shape: div-rect, label: "F13B35<br>訊號選擇" }
+        F13B45@{ shape: div-rect, label: "F13B45<br>訊號選擇" }
+        F13B48@{ shape: div-rect, label: "F13B48<br>訊號選擇" }
+        F07B52@{ shape: div-rect, label: "F07B52<br>輸出 " }
+    %%FunctionBlock definition 3 row
+        F13B20@{ shape: div-rect, label: "F13B20<br>訊號選擇"}
+        F13B40@{ shape: div-rect, label: "F13B40<br>訊號選擇"}
+        F14B46@{ shape: div-rect, label: "F14B46<br>斜率線性設定"}
+        F12B14@{ shape: div-rect, label: "F12B14<br>多點定數設定 " }
+        F08B53@{ shape: div-rect, label: "F08B53<br>警報 " }
+    %%FunctionBlock definition 4 row
+        F13B25@{ shape: div-rect, label: "F13B25<br>訊號選擇 " }
+        F00B42@{ shape: div-rect, label: "F00B42<br>邏輯演算 " }
+        F14B37@{ shape: div-rect, label: "F14B37<br>斜率線性設定 " }
+        F00B38@{ shape: div-rect, label: "F00B38<br>邏輯演算 " }
+    %%FunctionBlock definition 5 row
+        F13B30@{ shape: div-rect, label: "F13B30<br>訊號選擇 " }
+        F00B43@{ shape: div-rect, label: "F00B43<br>邏輯演算 " }
+        F00B44@{ shape: div-rect, label: "F00B44<br>邏輯演算 " }
+        F26B11@{ shape: div-rect, label: "F26B11<br>平均值<br>最大最小值演算器 " }
+
+    %%Sinal
+        SIC101SV([SIC101SV])
+        AO0001([AO0001])
+
+    %%Flow
+        F02B05 -->|X1| F04B10
+        F02B05--> F08B53
+        F13B49 -->|X2| F04B10
+        F13B49 -->|X1| F07B52
+        F07B52 -->|Y1->X2| F02B05
+        F07B52 -->|Y2| AO0001
+        AO0001 -->|X2| F07B52
+
+        F13B15 -->|X1|F13B35
+        F13B20 -->|X2|F13B35
+        F13B25 -->|X3|F13B35
+        F13B30 -->|X4|F13B35
+
+        F13B35 -->|X1|F13B45
+
+
+        F13B40 -->|X2|F13B45
+
+
+        F13B45 -->|X1|F13B48
+        F13B45 -->|X2|F14B47
+
+        F14B46 -->|X2|F13B48
+        F14B47 -->|X3|F13B48
+
+        SIC101SV -->|X2|F13B49
+        F12B14 -->|X3|F13B49
+
+        F13B48 -->|X1|F13B49
+
+
 ```
