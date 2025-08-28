@@ -9,7 +9,8 @@
         "RCMT",
         "localtime",
         "colwidth",
-        "colheader"
+        "colheader",
+        "subline"
 ],
 "markdownlint.config": {
   "MD033": false,

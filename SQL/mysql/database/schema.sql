@@ -27,7 +27,7 @@
 -- ALTER TABLE Daily_report ADD COLUMN tag TEXT DEFAULT '未分類';
 
 -- 更新現有資料（方法1）  
---UPDATE Daily_report SET tag = '專案' WHERE content LIKE '%RCMT%';  
+--UPDATE Daily_report SET id = '10' WHERE content = '測試文字寬度設定';  
 
 --查詢結果  
 --SELECT * FROM Daily_report;  
@@ -41,6 +41,9 @@
 
 -- 查詢資料表結構
 --PRAGMA table_info(Daily_report);
+
+-- 刪除特定資料
+-- DELETE FROM Daily_report WHERE id IN (10,11);
 
 
 
