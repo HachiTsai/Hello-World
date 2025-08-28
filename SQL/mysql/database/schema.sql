@@ -9,8 +9,11 @@
 
 
 -- 插入測試資料
--- INSERT INTO Daily_report (content, reference) VALUES 
---   ('查詢pip中需要更新版本的套件', 'z-others/pip-upgrade-step.ipynb');
+
+INSERT INTO Daily_report (content, reference) VALUES 
+  ('使用SIDERAI進行PDF解讀並轉檔py與json含RCMT-Tainan專案', 'z-my-note\hitachi-dcs\DDC-functionblock-detail'),
+  ('學習看P&ID圖', 'RCMT-Tainan尚未建學習檔'),
+  ('新增MLC1的SIC圖','loop.md/尚未完成');
 
 -- SELECT * FROM Daily_report WHERE content = '查詢pip中需要更新版本的套件';
 
