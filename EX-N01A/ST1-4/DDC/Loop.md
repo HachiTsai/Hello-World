@@ -70,7 +70,7 @@ flowchart LR
         F08B34@{ shape: div-rect, label: "F08B34<br>警報 " }
         F08B41@{ shape: div-rect, label: "F08B41<br>警報 " }
         F26B21@{ shape: div-rect, label: "F26B21<br>平均值<br>最大最小值演算器 " }
-        F14B17@{ shape: div-rect, label: "F14B17<br>勾配設定関数発生器 " }
+        F14B17@{ shape: div-rect, label: "F14B17<br>勾配設定関数発生器 " } 
 
         PIC101DATA1HH([PIC101DATA1HH])
         PIC101DATA1LL([PIC101DATA1LL])

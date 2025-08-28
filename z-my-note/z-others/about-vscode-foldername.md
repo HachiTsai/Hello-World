@@ -96,3 +96,188 @@ DB_PASS=secret
 1. 按 `Ctrl+Shift+P`（Cmd+Shift+P）
 2. 輸入「Preferences: Open Settings (JSON)」
 3. 檢查 `files.exclude` 設定
+
+---
+`.gitattributes` 和 `.gitignore` 都是 Git 版本控制系統中的重要配置文件，但它們的作用完全不同。讓我為你詳細解釋：
+
+## .gitignore - 忽略特定檔案
+
+**作用**：告訴 Git 哪些檔案或目錄**不應該**被納入版本控制
+
+### 常見使用情境
+
+```gitignore
+# 忽略日誌檔案
+*.log
+
+# 忽略依賴套件目錄
+node_modules/
+vendor/
+
+# 忽略環境設定檔（通常包含敏感資訊）
+.env
+.env.local
+
+# 忽略系統產生的檔案
+.DS_Store
+Thumbs.db
+
+# 忽略編譯產生的檔案
+*.class
+*.exe
+*.dll
+
+# 忽略 IDE 設定
+.vscode/
+.idea/
+```
+
+### 實際範例
+
+```gitignore
+# Python 專案
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Node.js 專案
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+```
+
+## .gitattributes - 檔案屬性設定
+
+**作用**：定義特定檔案或檔案類型的處理方式
+
+### -常見使用情境
+
+#### 1. **行尾字元處理**（跨平台協作）
+
+```gitattributes
+# 所有文字檔案自動轉換行尾字元
+* text=auto
+
+# 特定檔案類型明確設定
+*.js text eol=lf
+*.py text eol=lf
+*.html text eol=crlf
+```
+
+#### 2. **二進位檔案標記**
+
+```gitattributes
+# 標記二進位檔案（防止 Git 嘗試合併）
+*.png binary
+*.jpg binary
+*.pdf binary
+*.zip binary
+```
+
+#### 3. **差異比較設定**
+
+```gitattributes
+# 針對特定檔案類型使用自訂差異工具
+*.sql diff=sql
+*.py diff=python
+```
+
+#### 4. **合併策略設定**
+
+```gitattributes
+# 對於經常衝突的檔案設定合併策略
+package-lock.json merge=union
+yarn.lock merge=union
+```
+
+#### 5. **匯出設定**（export-ignore）
+
+```gitattributes
+# 從匯出檔案中排除特定檔案或目錄
+/docs/ export-ignore
+/tests/ export-ignore
+.gitattributes export-ignore
+```
+
+## 兩者差異比較
+
+| 特性 | .gitignore | .gitattributes |
+|------|------------|----------------|
+| **主要目的** | 忽略追蹤 | 設定檔案屬性 |
+| **影響範圍** | 是否加入版本控制 | 如何處理已追蹤檔案 |
+| **常用情境** | 排除臨時檔案、依賴套件 | 跨平台行尾字元、二進位檔案處理 |
+| **檔案位置** | 通常放在專案根目錄 | 通常放在專案根目錄 |
+
+## 實際應用範例
+
+### 專案結構範例
+
+```text
+my-project/
+├── .gitignore          # 忽略不需要的檔案
+├── .gitattributes      # 設定檔案屬性
+├── src/                # 原始碼
+├── node_modules/       # 被 gitignore 忽略
+├── .env                # 被 gitignore 忽略
+└── README.md
+```
+
+### .gitignore 內容
+
+```gitignore
+# 依賴套件
+node_modules/
+vendor/
+
+# 環境變數
+.env
+.env.*
+
+# 作業系統
+.DS_Store
+Thumbs.db
+
+# 日誌
+*.log
+npm-debug.log*
+```
+
+### .gitattributes 內容
+
+```gitattributes
+# 自動處理行尾字元
+* text=auto
+
+# 明確設定文字檔案
+*.js text eol=lf
+*.py text eol=lf
+*.html text eol=lf
+
+# 二進位檔案
+*.png binary
+*.jpg binary
+*.gif binary
+
+# 文件檔案
+*.md text
+*.txt text
+```
+
+## 最佳實踐建議
+
+1. **`.gitignore` 應該**：
+   - 包含所有專案通用的忽略規則
+   - 針對使用的程式語言和框架客製化
+   - 定期檢視和更新
+
+2. **`.gitattributes` 應該**：
+   - 設定適當的行尾字元處理
+   - 標記所有二進位檔案
+   - 根據團隊開發環境調整
+
+3. **兩者都應該**：
+   - 加入版本控制（追蹤它們自己）
+   - 在專案一開始就設定好
+   - 確保團隊所有成員都使用相同的設定
