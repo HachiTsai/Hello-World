@@ -10,13 +10,16 @@
 
 -- 插入測試資料
 
--- INSERT INTO Daily_report (content, reference, tag) VALUES 
---   ('新增db的tag欄位，並更新欄位資訊', 'SQL/mysql/database/hi.db', 'sql/db/schema');
+-- INSERT INTO Daily_report (content, reference, tag, created_at) VALUES 
+--   ('pip install --upgrade 出來的套件版本，有時需要修改', 'z-my-note/conda/conda-update.ipynb', 'conda/conda install/ conda update', datetime('now', 'localtime'));
+ 
+--  SELECT * FROM Daily_report;
+
 
 -- INSERT INTO Daily_report (content, reference, tag) VALUES 
 -- ('使用jupyter寫sqlite語法', 'SQL/sqlite-python.ipynb', 'ipython-sql/sql/');
 
--- SELECT * FROM Daily_report;
+
 
 -- SELECT * FROM Daily_report WHERE content = 'pip';
 
