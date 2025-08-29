@@ -34,6 +34,7 @@
 | 顯示某 commit 的詳細內容 | `git show <commit-hash>` |
 | 顯示某 commit 的差異 | `git diff <commit-hash>` |
 | 顯示兩個 commit 之間的差異 | `git diff <hash1> <hash2>` |
+| 單一檔案回到上一個 commit hash | `git checkout <commit-hash> -- path/to/file.py` |
 
 ---
 
